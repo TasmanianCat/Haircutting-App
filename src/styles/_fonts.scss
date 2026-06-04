@@ -1,0 +1,23 @@
+// Montserrat Regular (Variable Font)
+@font-face {
+  font-family: 'Montserrat';
+  src:
+    url('/src/assets/fonts/Montserrat-VariableFont_wght.woff2') format('woff2'),
+    url('/src/assets/fonts/Montserrat-VariableFont_wght.woff') format('woff');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Montserrat Italic (Variable Font)
+@font-face {
+  font-family: 'Montserrat';
+  src:
+    url('/src/assets/fonts/Montserrat-Italic-VariableFont_wght.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/Montserrat-Italic-VariableFont_wght.woff')
+      format('woff');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}

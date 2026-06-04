@@ -1,0 +1,62 @@
+// Typography
+$font-primary:
+  'Montserrat',
+  system-ui,
+  -apple-system,
+  sans-serif;
+
+// Fluid Typography (Smooth scaling)
+$font-size-fluid-sm: clamp(
+  0.875rem,
+  0.8rem + 0.3vw,
+  1rem
+); // For small text/captions
+$font-size-fluid-base: clamp(
+  1rem,
+  0.9rem + 0.5vw,
+  1.125rem
+); // For body paragraphs
+$font-size-fluid-lg: clamp(1.25rem, 1rem + 1vw, 1.5rem); // For subheadings
+$font-size-fluid-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem); // For section titles
+$font-size-fluid-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem); // For Hero headings
+$font-size-fluid-3xl: clamp(
+  2.5rem,
+  1.5rem + 4vw,
+  5rem
+); // For massive display text
+
+// Font Weights (Semantic naming)
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Line Heights
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+
+// Colors
+// 1. BASE PALETTE (Raw Colors)
+$color-white: rgb(255, 255, 255);
+$color-off-white: rgb(242, 242, 242); // Your repeated 242, 242, 242
+$color-gold: rgb(196, 156, 72); // Your repeated 196, 156, 72
+$color-charcoal: rgb(42, 42, 42); // Your repeated 42, 42, 42
+$color-near-black: rgb(28, 28, 28);
+
+// 2. SEMANTIC VARIABLES (Roles / Usage)
+// Backgrounds
+$bg-primary: $color-white;
+$bg-secondary: $color-off-white;
+$bg-dark: $color-charcoal;
+
+// Typography
+$text-primary: $color-near-black;
+$text-inverse: $color-white;
+$text-accent: $color-gold;
+
+// Brand / Interactive Elements
+$accent: $color-gold;
+$accent-hover: rgb(170, 135, 60); // Slightly darker gold for hover states

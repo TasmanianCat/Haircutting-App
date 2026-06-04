@@ -1,3 +1,7 @@
+@use './fonts.scss';
+@use './variables.scss' as *;
+
+// CSS Reset
 *,
 *::before,
 *::after {
@@ -6,25 +10,17 @@
   padding: 0;
 }
 
+// Apply font family to the entire app
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Open Sans',
-    'Helvetica Neue',
-    sans-serif;
+  font-family: $font-primary;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  background-color: #ffffff;
-  color: #333333;
+  -webkit-font-smoothing: antialiased; // Makes fonts look sharper on Mac
+  -moz-osx-font-smoothing: grayscale; // Makes fonts look sharper on Mac
+  background-color: $bg-primary;
+  color: $text-primary;
 }
 
+// Ensure images/videos don't overflow
 img,
 picture,
 video,
@@ -34,6 +30,7 @@ svg {
   max-width: 100%;
 }
 
+// Inherit fonts in form elements
 input,
 button,
 textarea,
