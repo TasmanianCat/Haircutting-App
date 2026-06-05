@@ -1,0 +1,107 @@
+// 1. Import the modern Sass map module
+@use 'sass:map';
+
+// 2. Define the breakpoints map
+$breakpoints: (
+  'sm': 576px,
+  // Small devices
+  'md': 768px,
+  // Medium devices (tablets)
+  'lg': 992px,
+  // Large devices (desktops)
+  'xl': 1200px,
+  // Extra large devices
+  '2xl': 1400px,
+  '3xl': 1600px, // Ultra-wide
+);
+
+// 3. PRE-CALCULATE max-widths (Removes the '-' from inside the @media queries)
+$max-sm: map.get($breakpoints, 'sm') - 1px;
+$max-md: map.get($breakpoints, 'md') - 1px;
+$max-lg: map.get($breakpoints, 'lg') - 1px;
+$max-xl: map.get($breakpoints, 'xl') - 1px;
+$max-xxl: map.get($breakpoints, '2xl') - 1px;
+
+// 4. MOBILE-FIRST MIXINS (min-width)
+@mixin sm {
+  @media (min-width: map.get($breakpoints, 'sm')) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: map.get($breakpoints, 'md')) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (min-width: map.get($breakpoints, 'lg')) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: map.get($breakpoints, 'xl')) {
+    @content;
+  }
+}
+@mixin xxl {
+  @media (min-width: map.get($breakpoints, '2xl')) {
+    @content;
+  }
+}
+@mixin xxxl {
+  @media (min-width: map.get($breakpoints, '3xl')) {
+    @content;
+  }
+}
+
+// 5. DESKTOP-FIRST MIXINS (max-width)
+@mixin max-sm {
+  @media (max-width: $max-sm) {
+    @content;
+  }
+}
+@mixin max-md {
+  @media (max-width: $max-md) {
+    @content;
+  }
+}
+@mixin max-lg {
+  @media (max-width: $max-lg) {
+    @content;
+  }
+}
+@mixin max-xl {
+  @media (max-width: $max-xl) {
+    @content;
+  }
+}
+@mixin max-xxl {
+  @media (max-width: $max-xxl) {
+    @content;
+  }
+}
+
+// 6. RANGE MIXIN (Between two breakpoints)
+@mixin between($min, $max) {
+  // Calculate variables locally inside the mixin
+  $min-width: map.get($breakpoints, $min);
+  $max-width: map.get($breakpoints, $max) - 1px;
+
+  // The @media query only sees clean variables
+  @media (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}
+
+// Usage examples:
+// .container {
+//   padding: 16px;
+//
+//   @include md {
+//     padding: 24px;
+//   }
+//
+//   @include lg {
+//     padding: 32px;
+//   }
+// }
