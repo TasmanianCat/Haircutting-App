@@ -1,0 +1,114 @@
+// src/components/layout/MobileMenu/MobileMenu.module.scss
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(
+    $color-near-black,
+    0.85
+  ); // Dark semi-transparent backdrop
+  z-index: 999; // Just below the header (1000)
+  display: flex;
+  justify-content: flex-end; // Pushes the menu to the right side
+  animation: fadeIn 0.3s ease;
+}
+
+.menu {
+  width: 80%;
+  max-width: 320px;
+  height: 100%;
+  background-color: $bg-dark;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  animation: slideIn 0.3s ease;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: $text-inverse;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  @include transition(color);
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.navLink {
+  color: $text-inverse;
+  text-decoration: none;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  @include transition(color);
+
+  &:hover,
+  &:active {
+    color: $accent;
+  }
+}
+
+.ctaButton {
+  margin-top: 1rem;
+  background-color: $accent;
+  color: $color-near-black;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 100%;
+  text-align: center;
+  @include transition(background-color);
+
+  &:hover {
+    background-color: $accent-hover;
+  }
+}
+
+// --- ANIMATIONS ---
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

@@ -1,5 +1,7 @@
+// src/components/layout/Header/Header.tsx
 import { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu } from 'react-icons/fi';
+import MobileMenu from '../MobileMenu/MobileMenu'; // Import the new component
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -9,56 +11,66 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        {/* 1.Logo */}
-        <a href='/' className={styles.Logo}>
+        {/* 1. Logo */}
+        <a href='/' className={styles.logo}>
           BARBER<span className={styles.logoAccent}>PRO</span>
         </a>
 
         {/* 2. Desktop Navigation */}
         <nav className={styles.desktopNav}>
           <ul className={styles.navList}>
-            <li className={styles.navLink}>
-              <a href='#home'>Home</a>
+            <li>
+              <a href='#home' className={styles.navLink}>
+                Home
+              </a>
             </li>
-            <li className={styles.navLink}>
-              <a href='#about'>About</a>
+            <li>
+              <a href='#about' className={styles.navLink}>
+                About
+              </a>
             </li>
-            <li className={styles.navLink}>
-              <a href='#services'>Services</a>
+            <li>
+              <a href='#services' className={styles.navLink}>
+                Services
+              </a>
             </li>
-            <li className={styles.navLink}>
-              <a href='#gallery'>Gallery</a>
+            <li>
+              <a href='#gallery' className={styles.navLink}>
+                Gallery
+              </a>
             </li>
-            <li className={styles.navLink}>
-              <a href='#contacts'>Contacts</a>
+            <li>
+              <a href='#contacts' className={styles.navLink}>
+                Contacts
+              </a>
             </li>
           </ul>
         </nav>
 
-        {/* 3. Call to action button (Desktop) */}
+        {/* 3. Call to Action Button (Desktop) */}
         <a href='#booking' className={styles.ctaButton}>
           Book Now
         </a>
 
-        {/* 4. Mobile Hamburger button */}
+        {/* 4. Mobile Hamburger Button */}
         <button
           className={styles.mobileMenuBtn}
           onClick={toggleMobileMenu}
-          aria-label='Toggle menu'
+          aria-label='Open menu'
         >
-          {isMobileMenuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+          <FiMenu size={28} />
         </button>
       </div>
 
-      {/* Note: We will render the actual MobileMenu slide-out here in the next step */}
-      {isMobileMenuOpen && (
-        <div className={styles.mobileMenuOverlay}>
-          <p>Mobile Menu goes here...</p>
-        </div>
-      )}
+      {/* 5. Render the actual MobileMenu component */}
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />
     </header>
   );
 };

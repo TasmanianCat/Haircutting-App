@@ -107,18 +107,39 @@
 
 // --- MOBILE HAMBURGER BUTTON ---
 .mobileMenuBtn {
+  // 1. Reset default button styles
   background: none;
   border: none;
   color: $text-inverse;
   cursor: pointer;
-  padding: 0.5rem;
+
+  // 2. INCREASE PADDING to balance the visual weight
+  // This pushes the icon away from the edge, matching the logo's breathing room
+  padding: 0.75rem;
+  margin-right: -0.5rem; // Optional: Pulls it slightly closer to the edge if needed
+
   display: flex;
   align-items: center;
   justify-content: center;
 
+  // 3. Add a subtle transition for the hover effect
+  @include transition(color, 0.2s, ease);
+
   // Hide on desktop
   @include lg {
     display: none;
+  }
+
+  // 4. SUBTLE HOVER EFFECT (Instead of a box)
+  &:hover {
+    color: $accent; // Turns gold on hover
+  }
+
+  // 5. FOCUS STATE for accessibility
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 }
 
