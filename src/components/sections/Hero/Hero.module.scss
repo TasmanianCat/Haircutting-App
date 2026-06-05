@@ -1,0 +1,218 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; // Full viewport height
+  min-height: 600px; // Prevents squishing on small screens
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* --- BACKGROUND LAYER --- */
+.bgLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  /* ✅ CRITICAL: Establishes proper containing block */
+  overflow: hidden;
+}
+
+.bgVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* ✅ ENSURE THIS IS NOT FULLY OPAQUE */
+  background: linear-gradient(
+    to bottom,
+    rgba($color-near-black, 0.7) 0%,
+    rgba($color-near-black, 0.4) 50%,
+    rgba($color-near-black, 0.9) 100%
+  );
+  z-index: 2;
+}
+
+/* --- CONTENT LAYER --- */
+.content {
+  position: relative;
+  z-index: 3;
+  @include container(1200px, 1.5rem);
+  text-align: center;
+  color: $text-inverse;
+  max-width: 900px;
+
+  // Add this line to push content down slightly from the fixed header
+  padding-top: 80px;
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); // Fluid + responsive
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+
+  .accentText {
+    color: $accent;
+    display: block; // Forces "Timeless Style." to its own line
+  }
+}
+
+.subtitle {
+  font-family: $font-primary;
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+  font-weight: $font-weight-light;
+  line-height: $line-height-relaxed;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+/* --- CTA BUTTONS --- */
+.ctaGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  background-color: $accent;
+  color: $color-near-black;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  // ✅ Explicitly specify BOTH properties AND duration
+  @include transition((background-color, transform));
+
+  &:hover {
+    background-color: $accent-hover;
+    transform: translateY(-2px);
+  }
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: $text-inverse;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba($text-inverse, 0.3);
+  @include transition(all);
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+    transform: translateY(-2px);
+  }
+}
+
+/* --- SCROLL INDICATOR --- */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+
+  @include max-md {
+    display: none; // Hide on mobile to save space
+  }
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, $accent, transparent);
+  animation: scrollPulse 2s infinite;
+}
+
+.scrollText {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $text-inverse;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@include md {
+  .content {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .ctaGroup {
+    justify-content: flex-start;
+  }
+}
+
+@include lg {
+  .hero {
+    min-height: 80vh; // Taller on desktop
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    padding: 1.25rem 2.5rem;
+    font-size: $font-size-base;
+  }
+}

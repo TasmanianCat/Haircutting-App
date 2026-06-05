@@ -1,5 +1,7 @@
 // 1. Import the modern Sass map module
 @use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
 
 // 2. Define the breakpoints map
 $breakpoints: (
@@ -119,5 +121,17 @@ $max-xxl: map.get($breakpoints, '2xl') - 1px;
 
 // Smooth transition for hover effects
 @mixin transition($properties: all, $duration: 0.3s, $timing: ease-in-out) {
-  transition: $properties $duration $timing;
+  $props: if(meta.type-of($properties) == 'list', $properties, ($properties));
+
+  $transition-values: ();
+
+  @each $prop in $props {
+    $transition-values: list.append(
+      $transition-values,
+      #{$prop} #{$duration} #{$timing},
+      comma
+    );
+  }
+
+  transition: $transition-values;
 }

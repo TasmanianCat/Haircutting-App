@@ -1,9 +1,17 @@
-function Home() {
+import Header from '@/components/layout/Header/Header';
+import Hero from '@/components/sections/Hero/Hero';
+// Import other sections later
+
+const Home = () => {
   return (
     <>
-      <h1>Main Heading from the Home page</h1>
+      <Header />
+      <main>
+        <Hero />
+        {/* Other sections will go here */}
+      </main>
     </>
   );
-}
+};
 
 export default Home;
