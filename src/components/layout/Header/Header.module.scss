@@ -1,0 +1,142 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; // Keeps it above all other content
+  background-color: rgba($bg-dark, 0.95); // Semi-transparent dark background
+  backdrop-filter: blur(10px); // Modern glassmorphism effect
+  border-bottom: 1px solid rgba($color-white, 0.05);
+}
+
+.container {
+  @include container(1200px, 1.5rem); // Uses our mixin!
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+// --- LOGO ---
+.logo {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-inverse;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+
+  .logoAccent {
+    color: $accent; // Gold color
+  }
+}
+
+// --- DESKTOP NAVIGATION ---
+.desktopNav {
+  // Hidden by default (Mobile First)
+  display: none;
+
+  // Show on Large screens (Desktop)
+  @include lg {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: $text-inverse;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  @include transition(color);
+
+  &:hover {
+    color: $accent;
+  }
+
+  // Cool underline hover effect
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $accent;
+    @include transition(width);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// --- CTA BUTTON ---
+.ctaButton {
+  // Hidden by default (Mobile First)
+  display: none;
+
+  @include lg {
+    display: inline-block;
+  }
+
+  background-color: $accent;
+  color: $color-near-black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  @include transition(background-color);
+
+  &:hover {
+    background-color: $accent-hover;
+  }
+}
+
+// --- MOBILE HAMBURGER BUTTON ---
+.mobileMenuBtn {
+  background: none;
+  border: none;
+  color: $text-inverse;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Hide on desktop
+  @include lg {
+    display: none;
+  }
+}
+
+// --- MOBILE MENU OVERLAY (Placeholder for now) ---
+.mobileMenuOverlay {
+  position: fixed;
+  top: 80px; // Right below the header
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: $bg-dark;
+  color: $text-inverse;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Hide on desktop
+  @include lg {
+    display: none;
+  }
+}

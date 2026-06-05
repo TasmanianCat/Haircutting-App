@@ -22,7 +22,9 @@ $max-lg: map.get($breakpoints, 'lg') - 1px;
 $max-xl: map.get($breakpoints, 'xl') - 1px;
 $max-xxl: map.get($breakpoints, '2xl') - 1px;
 
-// 4. MOBILE-FIRST MIXINS (min-width)
+// ==========================================
+// 4. RESPONSIVE MIXINS (Mobile-First)
+// ==========================================
 @mixin sm {
   @media (min-width: map.get($breakpoints, 'sm')) {
     @content;
@@ -54,7 +56,9 @@ $max-xxl: map.get($breakpoints, '2xl') - 1px;
   }
 }
 
+// ==========================================
 // 5. DESKTOP-FIRST MIXINS (max-width)
+// ==========================================
 @mixin max-sm {
   @media (max-width: $max-sm) {
     @content;
@@ -81,27 +85,39 @@ $max-xxl: map.get($breakpoints, '2xl') - 1px;
   }
 }
 
-// 6. RANGE MIXIN (Between two breakpoints)
+// ==========================================
+// 6. RANGE MIXIN
+// ==========================================
 @mixin between($min, $max) {
-  // Calculate variables locally inside the mixin
   $min-width: map.get($breakpoints, $min);
   $max-width: map.get($breakpoints, $max) - 1px;
-
-  // The @media query only sees clean variables
   @media (min-width: $min-width) and (max-width: $max-width) {
     @content;
   }
 }
 
-// Usage examples:
-// .container {
-//   padding: 16px;
-//
-//   @include md {
-//     padding: 24px;
-//   }
-//
-//   @include lg {
-//     padding: 32px;
-//   }
-// }
+// ==========================================
+// 7. UTILITY MIXINS (Added back!)
+// ==========================================
+
+// Centers content both horizontally and vertically
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Standard centered container with max-width and side padding
+@mixin container($max-width: 1200px, $padding: 1.5rem) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+// Smooth transition for hover effects
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease-in-out) {
+  transition: $properties $duration $timing;
+}
