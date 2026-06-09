@@ -1,0 +1,178 @@
+.about {
+  background-color: $bg-primary;
+  // Fluid vertical padding: scales from 4rem on mobile to 8rem on desktop
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  overflow: hidden; // Prevents the offset border from causing horizontal scroll
+}
+
+.container {
+  @include container(1200px, 1.5rem);
+  display: grid;
+  gap: 3rem;
+  // Mobile first: single column
+  grid-template-columns: 1fr;
+  align-items: center;
+
+  // Tablet and up: split layout
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+/* --- IMAGE SECTION --- */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @include lg {
+    margin: 0;
+    // Push image slightly to the right on desktop for better visual balance
+    justify-self: end;
+    max-width: 100%;
+  }
+}
+
+.imageFrame {
+  position: relative;
+  z-index: 2;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba($color-near-black, 0.15);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 5; // Maintains a nice portrait proportion
+  object-fit: cover;
+}
+
+// The decorative gold offset border
+.imageBorder {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid $accent;
+  border-radius: 8px;
+  z-index: 1;
+
+  // Move it to the bottom-right on desktop for a dynamic look
+  @include lg {
+    top: auto;
+    left: auto;
+    bottom: -20px;
+    right: -20px;
+  }
+}
+
+/* --- TEXT SECTION --- */
+.content {
+  @include lg {
+    padding-left: 2rem;
+  }
+}
+
+.subtitle {
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $accent;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  line-height: $line-height-tight;
+  margin-bottom: 1.5rem;
+
+  .titleAccent {
+    color: $text-primary; // Keep it dark, or use $accent if you want it to pop
+    opacity: 0.8;
+  }
+}
+
+.description {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  color: $text-primary;
+  line-height: $line-height-relaxed;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+/* --- FEATURE LIST --- */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: rgba($accent, 0.15); // Subtle gold background
+  color: $accent;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: $font-weight-bold;
+  flex-shrink: 0;
+}
+
+/* --- CTA BUTTON --- */
+.ctaButton {
+  display: inline-block;
+  background-color: $accent;
+  color: $color-near-black;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  width: 100%;
+  text-align: center;
+
+  @include sm {
+    width: auto;
+  }
+
+  // Explicitly pass properties and duration to avoid the mixin bug we fixed earlier!
+  @include transition(transform, 0.2s, ease);
+
+  &:hover {
+    transform: translateY(-3px);
+    background-color: $accent-hover;
+  }
+}

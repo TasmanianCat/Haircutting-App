@@ -1,6 +1,6 @@
 import Header from '@/components/layout/Header/Header';
 import Hero from '@/components/sections/Hero/Hero';
-// Import other sections later
+import About from '@/components/sections/About/About';
 
 const Home = () => {
   return (
@@ -8,6 +8,7 @@ const Home = () => {
       <Header />
       <main>
         <Hero />
+        <About />
         {/* Other sections will go here */}
       </main>
     </>
