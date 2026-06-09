@@ -1,6 +1,7 @@
 import Header from '@/components/layout/Header/Header';
 import Hero from '@/components/sections/Hero/Hero';
 import About from '@/components/sections/About/About';
+import Services from '@/components/sections/Services/Services';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <main>
         <Hero />
         <About />
+        <Services />
         {/* Other sections will go here */}
       </main>
     </>
