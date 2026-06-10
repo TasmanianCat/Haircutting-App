@@ -10,6 +10,11 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth; // Ensures smooth scrolling for anchor links
+  scroll-padding-top: 80px; // Leaves 80px of breathing room above anchored sections
+}
+
 // Apply font family to the entire app
 body {
   font-family: $font-primary;
