@@ -55,7 +55,7 @@ const Header = () => {
         </nav>
 
         {/* 3. Call to Action Button (Desktop) */}
-        <a href='#booking' className={styles.ctaButton}>
+        <a href='#contacts' className={styles.ctaButton}>
           Book Now
         </a>
 

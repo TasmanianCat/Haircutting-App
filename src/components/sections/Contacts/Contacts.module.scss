@@ -1,0 +1,289 @@
+.contacts {
+  background-color: $bg-primary; // Light/white background
+  padding: clamp(4rem, 8vw, 8rem) 0;
+}
+
+.container {
+  @include container(1200px, 1.5rem);
+}
+
+/* --- SECTION HEADER --- */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.subtitle {
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $accent;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  line-height: $line-height-tight;
+}
+
+/* --- SPLIT LAYOUT --- */
+.splitLayout {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* --- MAP SECTION --- */
+.mapWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba($color-near-black, 0.1);
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(20%); // Subtle desaturation for professional look
+  @include transition(filter, 0.3s, ease);
+
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $accent;
+  text-decoration: none;
+  @include transition(color, 0.2s, ease);
+
+  &:hover {
+    color: $accent-hover;
+  }
+}
+
+/* --- INFO SECTION --- */
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Open/Closed Badge */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba($color-near-black, 0.05);
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.statusText {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Info Blocks */
+.infoBlock {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.infoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: rgba($accent, 0.1);
+  color: $accent;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.infoTitle {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin: 0;
+}
+
+.infoText {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  color: $text-primary;
+  opacity: 0.8;
+  margin: 0;
+  text-decoration: none;
+  @include transition(color, 0.2s, ease);
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.directionsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $accent;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  @include transition(color, 0.2s, ease);
+
+  &:hover {
+    color: $accent-hover;
+  }
+}
+
+.phoneLink {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  color: $text-primary;
+  text-decoration: none;
+  opacity: 0.8;
+  @include transition(color, 0.2s, ease);
+  display: block;
+
+  &:hover {
+    color: $accent;
+    opacity: 1;
+  }
+
+  .whatsappLabel {
+    font-size: $font-size-sm;
+    opacity: 0.7;
+    margin-left: 0.5rem;
+  }
+}
+
+/* Opening Hours List */
+.hoursList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hoursItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  color: $text-primary;
+  opacity: 0.8;
+
+  .day {
+    font-weight: $font-weight-medium;
+  }
+
+  .time {
+    font-weight: $font-weight-regular;
+  }
+}
+
+/* Social Media Links */
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: rgba($color-near-black, 0.05);
+  color: $text-primary;
+  border-radius: 8px;
+  text-decoration: none;
+  @include transition(all, 0.3s, ease);
+
+  &:hover {
+    background-color: $accent;
+    color: $color-near-black;
+    transform: translateY(-3px);
+  }
+}
+
+/* Mobile Adjustments */
+@include max-md {
+  .mapContainer {
+    height: 300px;
+  }
+
+  .infoBlock {
+    gap: 1rem;
+  }
+
+  .infoIcon {
+    width: 40px;
+    height: 40px;
+  }
+}

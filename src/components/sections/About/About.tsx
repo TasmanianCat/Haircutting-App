@@ -99,7 +99,7 @@ const About = () => {
           </motion.ul>
 
           <motion.div variants={itemVariants}>
-            <a href='#booking' className={styles.ctaButton}>
+            <a href='#contacts' className={styles.ctaButton}>
               Book Your Visit
             </a>
           </motion.div>

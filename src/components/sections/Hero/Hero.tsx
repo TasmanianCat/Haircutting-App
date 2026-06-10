@@ -74,7 +74,7 @@ const Hero = () => {
         </motion.p>
 
         <motion.div className={styles.ctaGroup} variants={itemVariants}>
-          <a href='#booking' className={styles.primaryBtn}>
+          <a href='#contacts' className={styles.primaryBtn}>
             Book Appointment
           </a>
           <a href='#services' className={styles.secondaryBtn}>
