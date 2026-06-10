@@ -65,7 +65,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           </li>
         </ul>
 
-        <a href='#booking' className={styles.ctaButton} onClick={onClose}>
+        <a href='#contacts' className={styles.ctaButton} onClick={onClose}>
           Book Now
         </a>
       </nav>

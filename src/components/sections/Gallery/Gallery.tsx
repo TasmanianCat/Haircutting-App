@@ -59,7 +59,25 @@ const Gallery = () => {
         <div className={styles.container}>
           {/* Section Header */}
           <div className={styles.sectionHeader}>
-            {/* ... your header content ... */}
+            <motion.span
+              className={styles.subtitle}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              OUR PORTFOLIO
+            </motion.span>
+
+            <motion.h2
+              className={styles.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              Masterpieces in Motion
+            </motion.h2>
           </div>
 
           {/* Asymmetric Grid */}

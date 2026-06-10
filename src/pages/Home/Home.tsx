@@ -4,6 +4,7 @@ import About from '@/components/sections/About/About';
 import Services from '@/components/sections/Services/Services';
 import Gallery from '@/components/sections/Gallery/Gallery';
 import Contacts from '@/components/sections/Contacts/Contacts';
+import Footer from '@/components/layout/Footer/Footer';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <Services />
         <Gallery />
         <Contacts />
+        <Footer />
         {/* Other sections will go here */}
       </main>
     </>
