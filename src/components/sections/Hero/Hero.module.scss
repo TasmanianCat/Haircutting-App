@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh; // Full viewport height
+  height: 100dvh; // Full device viewport height
   min-height: 600px; // Prevents squishing on small screens
   display: flex;
   align-items: center;
@@ -70,9 +70,7 @@
   text-align: center;
   color: $text-inverse;
   max-width: 900px;
-
-  // Add this line to push content down slightly from the fixed header
-  padding-top: 80px;
+  padding-block: 80px;
 }
 
 .title {
@@ -96,8 +94,6 @@
   line-height: $line-height-relaxed;
   margin-bottom: 2.5rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
   opacity: 0.9;
 }
 
